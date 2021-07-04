@@ -8,12 +8,12 @@
 }
 
 .MovieItem__wraper {
-  width: 300px;
+  width: 260px;
   height: 100%;
 }
 
 .MovieItem__image {
-  width: 300px;
+  width: 100%;
   object-fit: cover;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }

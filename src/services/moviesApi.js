@@ -9,4 +9,18 @@ const fetchTrendingMovies = () => {
     .then((response) => response.data.results);
 };
 
-export { fetchTrendingMovies };
+const fetchMovieById = (movieId) => {
+  return axios
+    .get(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`)
+    .then((response) => response.data);
+};
+
+const fetchCastById = (movieId) => {
+  return axios
+    .get(
+      `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
+    )
+    .then((response) => response.data);
+};
+
+export { fetchTrendingMovies, fetchMovieById, fetchCastById };

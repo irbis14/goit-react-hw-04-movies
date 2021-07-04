@@ -10,7 +10,7 @@ class HomePage extends Component {
     error: null,
   };
 
-  fetchMovies = () => {
+  componentDidMount() {
     fetchTrendingMovies()
       .then((fetchedMovies) => {
         this.setState((prevState) => ({
@@ -18,16 +18,16 @@ class HomePage extends Component {
         }));
       })
       .catch((error) => this.setState({ error }));
-    // .finally(() => setTimeout(this.setState({ isLoading: false }), 500));
-  };
+  }
 
   render() {
+    const itemUrl = "movies/";
+    // const { url } = this.props.match;
     return (
       <div>
         <h1>Home page</h1>
-        <button onClick={this.fetchMovies}>Fetch</button>
         <MovieList>
-          <MovieItem movies={this.state.movies} />
+          <MovieItem movies={this.state.movies} itemUrl={itemUrl} />
         </MovieList>
       </div>
     );

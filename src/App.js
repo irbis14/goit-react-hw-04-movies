@@ -22,7 +22,7 @@ const App = () => (
     </nav>
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route path="/movies" component={MoviePage} />
+      <Route exact path="/movies" component={MoviePage} />
       <Route path="/movies/:movieId" component={MovieDetailsPage} />
       <Route path="/movies/:movieId/cast" component={MovieDetailsPage} />
       <Route path="/movies/:movieId/reviews" component={MovieDetailsPage} />
