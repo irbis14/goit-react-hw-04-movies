@@ -1,16 +1,21 @@
 import { Component } from "react";
 import { Route } from "react-router-dom";
 
-import { fetchMovieById } from "../services/moviesApi";
-import { fetchCastById } from "../services/moviesApi";
+import {
+  fetchMovieById,
+  fetchCastById,
+  fetchReviews,
+} from "../services/moviesApi";
 
 import MovieDetails from "../components/MovieDetails";
 import CastList from "../components/CastList";
+import ReviewList from "../components/ReviewList";
 
 class MovieDetailsPage extends Component {
   state = {
     movie: [],
     casts: [],
+    reviews: [],
   };
 
   componentDidMount() {
@@ -18,25 +23,32 @@ class MovieDetailsPage extends Component {
     fetchMovieById(movieId).then((fetchedById) => {
       this.setState({ movie: fetchedById });
     });
+
+    fetchCastById(movieId).then((fetchedCast) => {
+      this.setState({ casts: fetchedCast.cast });
+    });
+
+    fetchReviews(movieId).then((fetchedReviews) => {
+      this.setState({ reviews: fetchedReviews });
+    });
   }
 
-  fetchCast = () => {
-    const { movieId } = this.props.match.params;
-    fetchCastById(movieId).then((fetchedCast) => {
-      this.setState({
-        casts: fetchedCast.cast,
-      });
-      console.log(fetchedCast.cast);
-    });
+  handleGoBack = () => {
+    const { location, history } = this.props;
+    history.push(location?.state?.from || "/");
   };
 
   render() {
     const { poster_path, original_title, overview, vote_average, ganres } =
       this.state.movie;
-    const { casts } = this.state;
+    const { casts, reviews } = this.state;
+    const { location } = this.props;
+    console.log(location, "------location Movie Details Page");
+
     // const genresList = genres.map(({ name }) => name).join(", ");
 
-    const { pageUrl } = this.props.match;
+    const { url, path } = this.props.match;
+
     return (
       <>
         <MovieDetails
@@ -45,13 +57,19 @@ class MovieDetailsPage extends Component {
           overview={overview}
           voteAverage={vote_average}
           // genres={genresList}
-          goBack={this.props.history.goBack}
-          fetchCast={this.fetchCast}
-          pageUrl={pageUrl}
+          goBack={this.handleGoBack}
+          pageUrl={url}
+          // location={location}
         />
         <Route
-          path="/movies/:movieId/cast"
-          render={(casts) => <CastList casts={casts} />}
+          exact
+          path={`${path}/cast`}
+          render={(props) => <CastList {...props} casts={casts} />}
+        />
+        <Route
+          exact
+          path={`${path}/reviews`}
+          render={(props) => <ReviewList {...props} reviews={reviews} />}
         />
       </>
     );

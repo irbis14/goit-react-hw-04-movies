@@ -24,8 +24,8 @@ const App = () => (
       <Route exact path="/" component={HomePage} />
       <Route exact path="/movies" component={MoviePage} />
       <Route path="/movies/:movieId" component={MovieDetailsPage} />
-      <Route path="/movies/:movieId/cast" component={MovieDetailsPage} />
-      <Route path="/movies/:movieId/reviews" component={MovieDetailsPage} />
+      {/* <Route path="/movies/:movieId/cast" component={MovieDetailsPage} />
+      <Route path="/movies/:movieId/reviews" component={MovieDetailsPage} /> */}
       <Route component={NotFoundPage} />
     </Switch>
   </>

@@ -21,13 +21,17 @@ class HomePage extends Component {
   }
 
   render() {
+    const { movies } = this.state;
+    const { location } = this.props;
+    console.log(location, "------location Home Page");
+
     const itemUrl = "movies/";
     // const { url } = this.props.match;
     return (
       <div>
         <h1>Home page</h1>
         <MovieList>
-          <MovieItem movies={this.state.movies} itemUrl={itemUrl} />
+          <MovieItem movies={movies} itemUrl={itemUrl} location={location} />
         </MovieList>
       </div>
     );

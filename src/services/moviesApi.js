@@ -23,4 +23,12 @@ const fetchCastById = (movieId) => {
     .then((response) => response.data);
 };
 
-export { fetchTrendingMovies, fetchMovieById, fetchCastById };
+const fetchReviews = (movieId) => {
+  return axios
+    .get(
+      `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
+    )
+    .then((response) => response.data.results);
+};
+
+export { fetchTrendingMovies, fetchMovieById, fetchCastById, fetchReviews };

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import styles from "./MovieDetails.module.css";
 
 const imgURL = "https://image.tmdb.org/t/p/w500";
@@ -11,8 +11,8 @@ const MovieDetails = ({
   releaseDate,
   voteAverage,
   goBack,
-  fetchCast,
   pageUrl,
+  location,
 }) => {
   return (
     <>
@@ -39,9 +39,7 @@ const MovieDetails = ({
         <h4>Additional information</h4>
         <ul>
           <li>
-            <Link to={`${pageUrl}/cast`} onClick={fetchCast}>
-              Cast
-            </Link>
+            <Link to={`${pageUrl}/cast`}>Cast</Link>
           </li>
           <li>
             <Link to={`${pageUrl}/reviews`}>Reviews</Link>
@@ -52,4 +50,4 @@ const MovieDetails = ({
   );
 };
 
-export default MovieDetails;
+export default withRouter(MovieDetails);

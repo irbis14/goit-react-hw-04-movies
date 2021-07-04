@@ -1,16 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import styles from "./MovieItem.module.css";
 // import PropTypes from "prop-types";
 // import defaultImg from "./defaultImage.jpg";
 
 const imgURL = "https://image.tmdb.org/t/p/w500";
 
-const MovieItem = ({ movies, itemUrl }) => {
+const MovieItem = ({ movies, itemUrl, location }) => {
   return movies.map((movie) => {
     return (
       <li key={movie.id} className={styles.MovieItem}>
         <div className={styles.MovieItem__wraper}>
-          <Link to={`${itemUrl}${movie.id}`}>
+          <Link
+            to={{
+              pathname: `${itemUrl}${movie.id}`,
+              state: { from: location },
+            }}
+          >
             <img
               src={`${imgURL}${movie.poster_path}`}
               alt={movie.title}
@@ -39,4 +44,4 @@ MovieItem.propTypes = {
   onShowModal: PropTypes.func,
 };
  */
-export default MovieItem;
+export default withRouter(MovieItem);
