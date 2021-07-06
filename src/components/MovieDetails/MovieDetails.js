@@ -12,7 +12,6 @@ const MovieDetails = ({
   voteAverage,
   goBack,
   pageUrl,
-  location,
 }) => {
   return (
     <>

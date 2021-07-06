@@ -9,6 +9,14 @@ const fetchTrendingMovies = () => {
     .then((response) => response.data.results);
 };
 
+const fetchMovieByName = ({ searchQuery = "", page = 1 }) => {
+  return axios
+    .get(
+      `${BASE_URL}/search/movie?query=${searchQuery}&api_key=${API_KEY}&language=en-US&page=${page}&include_adult=false`
+    )
+    .then((response) => response.data.results);
+};
+
 const fetchMovieById = (movieId) => {
   return axios
     .get(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`)
@@ -31,4 +39,10 @@ const fetchReviews = (movieId) => {
     .then((response) => response.data.results);
 };
 
-export { fetchTrendingMovies, fetchMovieById, fetchCastById, fetchReviews };
+export {
+  fetchTrendingMovies,
+  fetchMovieById,
+  fetchCastById,
+  fetchReviews,
+  fetchMovieByName,
+};

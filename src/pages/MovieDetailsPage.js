@@ -59,7 +59,6 @@ class MovieDetailsPage extends Component {
           // genres={genresList}
           goBack={this.handleGoBack}
           pageUrl={url}
-          // location={location}
         />
         <Route
           exact
