@@ -1,7 +1,7 @@
 import { Link, withRouter } from "react-router-dom";
 import styles from "./MovieItem.module.css";
-// import PropTypes from "prop-types";
-// import defaultImg from "./defaultImage.jpg";
+import PropTypes from "prop-types";
+import defaultImg from "./default-movie-img.jpg";
 
 const imgURL = "https://image.tmdb.org/t/p/w500";
 
@@ -23,25 +23,26 @@ const MovieItem = ({ movies, itemUrl, location }) => {
             />
             <h3>{movie.title}</h3>
           </Link>
-          <p>Rating: {movie.vote_average}</p>
+          <p>User score: {movie.vote_average}</p>
         </div>
       </li>
     );
   });
 };
 
-/* MovieItem.defaultProps = {
+MovieItem.defaultProps = {
   src: defaultImg,
 };
 
 MovieItem.propTypes = {
-  images: PropTypes.shape({
+  movies: PropTypes.shape({
     id: PropTypes.number,
-    webformatURL: PropTypes.string,
-    tags: PropTypes.string,
-    largeImageURL: PropTypes.string,
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    vote_average: PropTypes.number,
   }),
-  onShowModal: PropTypes.func,
+  itemUrl: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
 };
- */
+
 export default withRouter(MovieItem);

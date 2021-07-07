@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styles from "./ReviewList.module.css";
 
 const ReviewList = ({ reviews }) => {
@@ -19,10 +20,19 @@ const ReviewList = ({ reviews }) => {
           </ul>
         </div>
       ) : (
-        <h2>No reviews found</h2>
+        <h3 className={styles.message}>Sorry, no reviews found</h3>
       )}
     </>
   );
+};
+
+ReviewList.propTypes = {
+  reviews: PropTypes.shape({
+    id: PropTypes.number,
+    author: PropTypes.string,
+    created_at: PropTypes.string,
+    content: PropTypes.string,
+  }),
 };
 
 export default ReviewList;

@@ -1,0 +1,55 @@
+.header {
+  top: 0;
+  left: 0;
+  position: sticky;
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 64px;
+  padding-right: 24px;
+  padding-left: 24px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #3f51b5;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.itemDecoration {
+  border-right: 2px solid #fff;
+}
+
+.item {
+  display: block;
+  width: 150px;
+  margin-right: 50px;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 24px;
+  color: #fff;
+}
+
+.link:hover,
+.link:focus {
+  color: rgb(231, 90, 177);
+  transform: scale(1.03);
+}
+
+.activeLink {
+  text-decoration: underline;
+  font-size: 24px;
+  color: rgb(231, 90, 177);
+}
+
+.activeLink:hover,
+.activeLink:focus {
+  color: #fff;
+}

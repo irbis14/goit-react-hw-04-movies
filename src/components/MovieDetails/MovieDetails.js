@@ -1,5 +1,8 @@
 import { Link, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import ButtonGoBack from "../Buttons/ButtonGoBack";
 import styles from "./MovieDetails.module.css";
+import defaultImg from "../MovieItem/default-movie-img.jpg";
 
 const imgURL = "https://image.tmdb.org/t/p/w500";
 
@@ -15,9 +18,7 @@ const MovieDetails = ({
 }) => {
   return (
     <>
-      <button type="button" onClick={goBack} className={styles.button}>
-        Go back
-      </button>
+      <ButtonGoBack goBack={goBack} />
       <div className={styles.wrapper}>
         <img
           src={`${imgURL}${posterPath}`}
@@ -30,7 +31,7 @@ const MovieDetails = ({
           <p>User Score: {voteAverage}</p>
           <h3>Overview</h3>
           <p>{overview}</p>
-          {/* <h4>Genres</h4>
+          {/*  <h4>Genres</h4>
           <p>{genres}</p> */}
         </div>
       </div>
@@ -47,6 +48,19 @@ const MovieDetails = ({
       </div>
     </>
   );
+};
+
+MovieDetails.defaultProps = {
+  src: defaultImg,
+};
+
+MovieDetails.propTypes = {
+  posterPath: PropTypes.string,
+  originalTitle: PropTypes.string,
+  releaseDate: PropTypes.string,
+  voteAverage: PropTypes.number,
+  overview: PropTypes.string,
+  pageUrl: PropTypes.string,
 };
 
 export default withRouter(MovieDetails);

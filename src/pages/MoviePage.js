@@ -1,11 +1,13 @@
 import { Component } from "react";
-import Searchbar from "../components/SearchForm/";
-import { fetchMovieByName } from "../services/moviesApi";
-import { windowsScrolling } from "../utils";
-
+import Searchbar from "../components/Searchbar";
+import ButtonGoBack from "../components/Buttons/ButtonGoBack";
+import ButtonMore from "../components/Buttons/ButtonMore";
 import MovieList from "../components/MovieList";
 import MovieItem from "../components/MovieItem";
 import Loader from "react-loader-spinner";
+
+import { fetchMovieByName } from "../services/moviesApi";
+import { windowsScrolling } from "../utils";
 
 import styles from "../components/Loader/Loader.module.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
@@ -19,10 +21,24 @@ class MoviePage extends Component {
     error: null,
   };
 
+  componentDidMount() {
+    if (localStorage.getItem("searchResults") !== null) {
+      const parsedMovies = JSON.parse(localStorage.getItem("searchResults"));
+      this.setState({
+        movies: parsedMovies,
+      });
+    }
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchQuery !== this.state.searchQuery) {
       this.fetchMovieByName();
     }
+  }
+
+  componentWillUnmount() {
+    this.state.movies.length > 0 &&
+      localStorage.setItem("searchResults", JSON.stringify(this.state.movies));
   }
 
   onSearchQuery = (query) => {
@@ -57,10 +73,11 @@ class MoviePage extends Component {
     const { location } = this.props;
     const itemUrl = "movies/";
 
+    const loadingMoreButtonCondition = movies.length > 0 && !isLoading;
+
     return (
       <>
         <div>
-          <h1>Movie page</h1>
           <Searchbar onSubmit={this.onSearchQuery} />
         </div>
         <div>
@@ -78,9 +95,13 @@ class MoviePage extends Component {
               Oops, something went wrong :/
             </h2>
           )}
+          <ButtonGoBack goBack={this.handleGoBack} />
           <MovieList>
             <MovieItem movies={movies} itemUrl={itemUrl} location={location} />
           </MovieList>
+          {loadingMoreButtonCondition && (
+            <ButtonMore fetchMovieByName={this.fetchMovieByName} />
+          )}
         </div>
       </>
     );

@@ -39,15 +39,12 @@ class MovieDetailsPage extends Component {
   };
 
   render() {
-    const { poster_path, original_title, overview, vote_average, ganres } =
+    const { poster_path, original_title, overview, vote_average, genres } =
       this.state.movie;
     const { casts, reviews } = this.state;
-    const { location } = this.props;
-    console.log(location, "------location Movie Details Page");
+    const { url, path } = this.props.match;
 
     // const genresList = genres.map(({ name }) => name).join(", ");
-
-    const { url, path } = this.props.match;
 
     return (
       <>

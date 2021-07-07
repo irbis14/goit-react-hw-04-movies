@@ -20,7 +20,7 @@ class Searchbar extends Component {
 
   render() {
     return (
-      <header className={styles.Searchbar}>
+      <div className={styles.Searchbar}>
         <form className={styles.SearchForm} onSubmit={this.handleSubmit}>
           <button type="submit" className={styles.SearchForm__button}>
             <span className={styles.SearchForm__buttonLabel}>Search</span>
@@ -35,7 +35,7 @@ class Searchbar extends Component {
             onChange={this.handleChange}
           />
         </form>
-      </header>
+      </div>
     );
   }
 }

@@ -2,6 +2,7 @@ import axios from "axios";
 
 const BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = "7266df9091fd13eed25fcf0ecb9f570b";
+// const CORS_URL = "https://newsuperserver.herokuapp.com/";
 
 const fetchTrendingMovies = () => {
   return axios
