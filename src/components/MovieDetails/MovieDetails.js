@@ -9,7 +9,7 @@ const imgURL = "https://image.tmdb.org/t/p/w500";
 const MovieDetails = ({
   posterPath,
   genres,
-  originalTitle,
+  title,
   overview,
   releaseDate,
   voteAverage,
@@ -22,11 +22,11 @@ const MovieDetails = ({
       <div className={styles.wrapper}>
         <img
           src={`${imgURL}${posterPath}`}
-          alt={originalTitle}
+          alt={title}
           className={styles.image}
         ></img>
         <div className={styles.container}>
-          <h2>{originalTitle}</h2>
+          <h2>{title}</h2>
           <p>{releaseDate}</p>
           <p>User Score: {voteAverage}</p>
           <h3>Overview</h3>
@@ -56,7 +56,7 @@ MovieDetails.defaultProps = {
 
 MovieDetails.propTypes = {
   posterPath: PropTypes.string,
-  originalTitle: PropTypes.string,
+  title: PropTypes.string,
   releaseDate: PropTypes.string,
   voteAverage: PropTypes.number,
   overview: PropTypes.string,

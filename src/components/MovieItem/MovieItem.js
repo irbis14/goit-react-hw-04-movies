@@ -11,6 +11,7 @@ const MovieItem = ({ movies, itemUrl, location }) => {
       <li key={movie.id} className={styles.MovieItem}>
         <div className={styles.MovieItem__wraper}>
           <Link
+            className={styles.MovieItem__link}
             to={{
               pathname: `${itemUrl}${movie.id}`,
               state: { from: location },
@@ -21,7 +22,7 @@ const MovieItem = ({ movies, itemUrl, location }) => {
               alt={movie.title}
               className={styles.MovieItem__image}
             />
-            <h3>{movie.title}</h3>
+            <h3 className={styles.MovieItem__title}>{movie.title}</h3>
           </Link>
           <p>User score: {movie.vote_average}</p>
         </div>

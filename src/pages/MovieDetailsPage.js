@@ -39,7 +39,7 @@ class MovieDetailsPage extends Component {
   };
 
   render() {
-    const { poster_path, original_title, overview, vote_average, genres } =
+    const { poster_path, title, overview, vote_average, genres } =
       this.state.movie;
     const { casts, reviews } = this.state;
     const { url, path } = this.props.match;
@@ -50,7 +50,7 @@ class MovieDetailsPage extends Component {
       <>
         <MovieDetails
           posterPath={poster_path}
-          originalTitle={original_title}
+          title={title}
           overview={overview}
           voteAverage={vote_average}
           // genres={genresList}

@@ -13,6 +13,8 @@
 }
 
 .MovieItem__image {
+  display: block;
+  margin-top: 10px;
   width: 100%;
   object-fit: cover;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -21,4 +23,17 @@
 .MovieItem__image:hover {
   transform: scale(1.03);
   cursor: pointer;
+}
+
+.MovieItem__title {
+  color: #3f51b5;
+}
+
+.MovieItem__link {
+  text-decoration: none;
+}
+
+.MovieItem__link:hover .MovieItem__title,
+.MovieItem__link:focus .MovieItem__title {
+  color: rgb(231, 90, 177);
 }
