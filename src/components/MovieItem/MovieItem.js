@@ -24,7 +24,9 @@ const MovieItem = ({ movies, itemUrl, location }) => {
             />
             <h3 className={styles.MovieItem__title}>{movie.title}</h3>
           </Link>
-          <p>User score: {movie.vote_average}</p>
+          <p className={styles.MovieItem__score}>
+            User score: {movie.vote_average}
+          </p>
         </div>
       </li>
     );

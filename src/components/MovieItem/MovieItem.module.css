@@ -29,6 +29,11 @@
   color: #3f51b5;
 }
 
+.MovieItem__score,
+.MovieItem__title {
+  padding-left: 10px;
+}
+
 .MovieItem__link {
   text-decoration: none;
 }
