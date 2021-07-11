@@ -28,7 +28,11 @@ class CastList extends Component {
                   <li key={cast.id}>
                     <div className={styles.wraper}>
                       <img
-                        src={`${imgURL}${cast.profile_path}`}
+                        src={
+                          cast.profile_path
+                            ? `${imgURL}${cast.profile_path}`
+                            : defaultImg
+                        }
                         alt={cast.name}
                         className={styles.image}
                       ></img>
@@ -47,9 +51,5 @@ class CastList extends Component {
     );
   }
 }
-
-CastList.defaultProps = {
-  src: "https://i.stack.imgur.com/l60Hf.png",
-};
 
 export default CastList;

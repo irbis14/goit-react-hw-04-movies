@@ -44,7 +44,15 @@ class MovieDetailsPage extends Component {
     const { casts, reviews } = this.state;
     const { url, path } = this.props.match;
 
-    // const genresList = genres.map(({ name }) => name).join(", ");
+    console.log(genres, "---genres");
+
+    /* const genresMap = genres.map((genre) => genre.name);
+    console.log(genresMap, "-----genresMap"); */
+    let genresList;
+    if (genres) {
+      let genresList = genres.map(({ name }) => name).join(", ");
+      console.log(genresList, "-----genresList");
+    }
 
     return (
       <>
@@ -53,7 +61,7 @@ class MovieDetailsPage extends Component {
           title={title}
           overview={overview}
           voteAverage={vote_average}
-          // genres={genresList}
+          genresList={genresList}
           goBack={this.handleGoBack}
           pageUrl={url}
         />

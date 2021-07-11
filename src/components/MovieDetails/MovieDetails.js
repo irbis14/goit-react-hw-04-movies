@@ -8,7 +8,7 @@ const imgURL = "https://image.tmdb.org/t/p/w500";
 
 const MovieDetails = ({
   posterPath,
-  genres,
+  genresList,
   title,
   overview,
   releaseDate,
@@ -31,8 +31,8 @@ const MovieDetails = ({
           <p>User Score: {voteAverage}</p>
           <h3>Overview</h3>
           <p>{overview}</p>
-          {/*  <h4>Genres</h4>
-          <p>{genres}</p> */}
+          <h4>Genres</h4>
+          <p>{genresList}</p>
         </div>
       </div>
       <div className={styles.wrapper__additional}>

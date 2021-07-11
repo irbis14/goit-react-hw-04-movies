@@ -18,7 +18,9 @@ const MovieItem = ({ movies, itemUrl, location }) => {
             }}
           >
             <img
-              src={`${imgURL}${movie.poster_path}`}
+              src={
+                movie.poster_path ? `${imgURL}${movie.poster_path}` : defaultImg
+              }
               alt={movie.title}
               className={styles.MovieItem__image}
             />
@@ -31,10 +33,6 @@ const MovieItem = ({ movies, itemUrl, location }) => {
       </li>
     );
   });
-};
-
-MovieItem.defaultProps = {
-  src: defaultImg,
 };
 
 MovieItem.propTypes = {
