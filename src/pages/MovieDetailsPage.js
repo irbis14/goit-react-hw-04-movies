@@ -44,16 +44,6 @@ class MovieDetailsPage extends Component {
     const { casts, reviews } = this.state;
     const { url, path } = this.props.match;
 
-    console.log(genres, "---genres");
-
-    /* const genresMap = genres.map((genre) => genre.name);
-    console.log(genresMap, "-----genresMap"); */
-    let genresList;
-    if (genres) {
-      let genresList = genres.map(({ name }) => name).join(", ");
-      console.log(genresList, "-----genresList");
-    }
-
     return (
       <>
         <MovieDetails
@@ -61,7 +51,7 @@ class MovieDetailsPage extends Component {
           title={title}
           overview={overview}
           voteAverage={vote_average}
-          genresList={genresList}
+          genres={genres}
           goBack={this.handleGoBack}
           pageUrl={url}
         />
